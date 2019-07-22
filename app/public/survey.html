@@ -14,19 +14,19 @@
         <form>
             <div class="form-group">
             <label for="exampleInputEmail1">Your Name (Required)</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your name">
+            <input type="email" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter your name">
             </div>
             <div class="form-group">
             <label for="exampleInputPassword1">Link to Photo Image (Required)</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Photo link">
+            <input type="password" class="form-control" id="photoImage" placeholder="Photo link">
             </div>
             <!-- Questions -->
             <hr>
-            <h3><b>Questions 1</b></h3>
+            <h3><b>Question 1</b></h3>
             <div class="form-group">
                 <p>Your mind is always buzzing with unexplored ideas and plans.</p>
                 <label for="exampleFormControlSelect1">Choose an option</label>
-                <select class="form-control" id="exampleFormControlSelect1">
+                <select class="form-control" id="q1">
                     <option>1 (Strongly Disagree)</option>
                     <option>2</option>
                     <option>3</option>
@@ -34,7 +34,7 @@
                     <option>5 (Strongly Agree)</option>
                 </select>
             </div>
-            <h3><b>Questions 2</b></h3>
+            <h3><b>Question 2</b></h3>
             <div class="form-group">
                 <p>Generally speaking, you rely more on your experience than your imagination.</p>
                 <label for="exampleFormControlSelect1">Choose an option</label>
@@ -46,7 +46,7 @@
                     <option>5 (Strongly Agree)</option>
                 </select>
             </div>
-            <h3><b>Questions 3</b></h3>
+            <h3><b>Question 3</b></h3>
             <div class="form-group">
                 <p>You find it easy to stay relaxed and focused even when there is some pressure.</p>
                 <label for="exampleFormControlSelect1">Choose an option</label>
@@ -58,7 +58,7 @@
                     <option>5 (Strongly Agree)</option>
                 </select>
             </div>
-            <h3><b>Questions 4</b></h3>
+            <h3><b>Question 4</b></h3>
             <div class="form-group">
                 <p>You rarely do something just out of sheer curiosity.</p>
                 <label for="exampleFormControlSelect1">Choose an option</label>
@@ -70,7 +70,7 @@
                     <option>5 (Strongly Agree)</option>
                 </select>
             </div>
-            <h3><b>Questions 5</b></h3>
+            <h3><b>Question 5</b></h3>
             <div class="form-group">
                 <p>People can rarely upset you.</p>
                 <label for="exampleFormControlSelect1">Choose an option</label>
@@ -82,7 +82,7 @@
                     <option>5 (Strongly Agree)</option>
                 </select>
             </div>
-            <h3><b>Questions 6</b></h3>
+            <h3><b>Question 6</b></h3>
             <div class="form-group">
                 <p>It is often difficult for you to relate to other people’s feelings.</p>
                 <label for="exampleFormControlSelect1">Choose an option</label>
@@ -94,7 +94,7 @@
                     <option>5 (Strongly Agree)</option>
                 </select>
             </div>
-            <h3><b>Questions 7</b></h3>
+            <h3><b>Question 7</b></h3>
             <div class="form-group">
                 <p>In a discussion, truth should be more important than people’s sensitivities.</p>
                 <label for="exampleFormControlSelect1">Choose an option</label>
@@ -106,7 +106,7 @@
                     <option>5 (Strongly Agree)</option>
                 </select>
             </div>
-            <h3><b>Questions 8</b></h3>
+            <h3><b>Question 8</b></h3>
             <div class="form-group">
                 <p>You rarely get carried away by fantasies and ideas.</p>
                 <label for="exampleFormControlSelect1">Choose an option</label>
@@ -118,7 +118,7 @@
                     <option>5 (Strongly Agree)</option>
                 </select>
             </div>
-            <h3><b>Questions 9</b></h3>
+            <h3><b>Question 9</b></h3>
             <div class="form-group">
                 <p>You think that everyone’s views should be respected regardless of whether they are supported by facts or not.</p>
                 <label for="exampleFormControlSelect1">Choose an option</label>
@@ -130,7 +130,7 @@
                     <option>5 (Strongly Agree)</option>
                 </select>
             </div>
-            <h3><b>Questions 10</b></h3>
+            <h3><b>Question 10</b></h3>
             <div class="form-group">
                 <p>You feel more energetic after spending time with a group of people.</p>
                 <label for="exampleFormControlSelect1">Choose an option</label>
@@ -142,12 +142,47 @@
                     <option>5 (Strongly Agree)</option>
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Submit</button>
         </form>
-        
+        <hr>
         <footer class="footer">
             <p><a href="#">API Friends List</a> | <a href="https://github.com/yutsukushi/FriendFinder" target="_blank">GitHub Repo</a></p>  
         </footer>
+
+    <!-- Friend Result -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+            </div>
+        </div>
     </div>
+
+    <script type="text/javascript">
+     $(".submit").on("click", function(event) { //on click jQuery
+      event.preventDefault();
+      var newFriend = { //taking the values from dropdwn menus
+        name: $("#name").val(),
+        photoImage: $("#photoImage").val(),
+        answers: $("#reserveEmail").val() //answers array
+      };
+      $.post("/data/friends.js", newFriend, function(res) { //post function for API.
+        if (res) {
+            $(document).html("#photoResult"); //display modal dropdown
+        }
+        else {
+          alert("You are on the wait list.");
+        }
+        })
+    });
+    </script>
 </body>
 </html>
