@@ -172,7 +172,7 @@
       var newFriend = { //taking the values from dropdwn menus
         name: $("#name").val(),
         photoImage: $("#photoImage").val(),
-        answers: $("#reserveEmail").val() //answers array
+        answers: $(".answers").val() //answers array
       };
       $.post("/data/friends.js", newFriend, function(res) { //post function for API.
         if (res) {
