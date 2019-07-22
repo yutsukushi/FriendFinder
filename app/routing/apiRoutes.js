@@ -1,4 +1,5 @@
 // might need possibly for modal popup
+
   app.get("/api/friends", function(req, res) {
       res.sendFile(path.join(__dirname, "reserve.html"));
     });
@@ -16,5 +17,5 @@
     console.log(newRes);
 
     res.json(newRes);
-    
+
 });

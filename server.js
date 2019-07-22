@@ -1,8 +1,8 @@
 // Dependencies
 // =============================================================
 var express = require("express");
-var path = require("path");
-var htmlRoutes = require("./app/routing/htmlRoutes.js");
+
+// var apiRoutes = require("../FriendFinder/app/routing/apiRoutes");
 
 // Sets up the Express App
 // =============================================================
@@ -13,7 +13,7 @@ var PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// htmlRoutes;
+require("../FriendFinder/app/routing/htmlRoutes.js")(app);
 
 // Starts the server to begin listening
 // =============================================================
