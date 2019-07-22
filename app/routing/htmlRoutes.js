@@ -1,5 +1,4 @@
 // // Basic route that sends the user first to the AJAX Page
-// var server = require("../../server.js");
 module.exports = function(app) {
 
 var path = require("path");    

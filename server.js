@@ -2,8 +2,6 @@
 // =============================================================
 var express = require("express");
 
-// var apiRoutes = require("../FriendFinder/app/routing/apiRoutes");
-
 // Sets up the Express App
 // =============================================================
 var app = express();
@@ -14,6 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 require("../FriendFinder/app/routing/htmlRoutes.js")(app);
+require("../FriendFinder/app/routing/apiRoutes")(app);
 
 // Starts the server to begin listening
 // =============================================================
