@@ -165,6 +165,8 @@
                 </button>
                 </div>
                 <div class="modal-body">
+                    <h1 class="bestMatchName"></h1>
+                    <img class="bestMatchPhoto" src="" alt="">
                 </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -203,8 +205,8 @@
         if (res) {
             
             console.log(res);
-            $(".modal-header").text(res.name);
-            $(".modal-body").attr("src", res.photoImage); //display modal dropdown
+            $(".bestMatchName").text(res.name);
+            $(".bestMatchPhoto").attr("src", res.photoImage); //display modal dropdown
             $(".bestMatch").modal("show");
             // display best match information
         }
