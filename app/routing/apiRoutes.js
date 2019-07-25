@@ -14,56 +14,47 @@ module.exports = function(app) {
     // This works because of our body parsing middleware
 
     var request = req.body;
-    // console.log(request.answers);
 
-    // for loop to turn every answer in array into an integer
-    var intArray = []; //integer array for user input
-    var totalDiff = [], smArr; //integer array for friends in storage
+    var bestMatch = {
+      name: "",
+      photoImage: "",
+      totalDiff: totalDiff
+    }
+    // run a nested for loop of friends object
+    // userAnswers and currFrndAnswers
 
-    // for every object in friend array,
+    var totalDiff = 0;
+
+    // // for every object in friend array,
     for (var f = 0; f < friends.length; f++) {
-      // difference between each answers index integer to newFriend index answers
+    //   // difference between each answers index integer to newFriend index answers
         for (var i = 0; i < request.answers.length; i++) { 
-          //converts strings to integers per index and pushes into intArray
+       //converts strings to integers per index and pushes into intArray
 
-          intArray.push(parseInt(request.answers[i]));
-          
-          totalDiff.push(Math.abs(friends[f].answers[i] - intArray[i]));
-          // when index hits 9, split to new array.
-          
-        }
+        // collect the difference and add, 
+      
+        totalDiff += (Math.abs(parseInt(friends[f].answers[i]) - parseInt(request.answers[i])));
 
-        if (totalDiff.length > 0) {
-
-          smArr = totalDiff.splice(0,10)
+        console.log(totalDiff);
     
-          console.log(smArr);
-    
-        }
+      }
         
     }
 
-    // collect the difference and add, 
-      
-      var totalNew = 0;
-      var totalFriends = 0;
+    // // post photo image in a modal with their name.
 
-      for (var i in smArr) { 
-        totalNew += intArray[i]; 
-        totalFriends += smArr[i];
+    // // if friends index has lowest difference
+    // // lowest totalDifference variable will be posted as best match
+ 
+      if (friends[i] >= totalDiff) {
+        friends[i].name = bestMatch.name,
+        friends[i].photoImage = bestMatch.photoImage,
+        totalDiff = bestMatch.totalDiff //prints name
       }
   
-    console.log(totalNew);
-    console.log(totalFriends);
-    // post photo image in a modal with their name.
-
-    // if friends index has lowest difference
-    // lowest totalDifference variable will be posted as best match
-    if (totalFriends >= totalNew) {
-
-    }
     // send best match photoImage as a modal
-    res.json(request);
+
+    res.json(bestMatch);
 
     });
     
