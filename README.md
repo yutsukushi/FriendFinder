@@ -12,4 +12,6 @@ A NodeJS and Express application that evaluates your qualities and presents you 
  
  https://salty-ravine-73994.herokuapp.com/
  
- 
+**How to use**
+
+The user will first be presented with a landing page of Friend Finder and a button to proceed to a bried survey. The user will be asked to fill out their name and include a link of their photo to the form. After that, answering each question from a value of 1 to 5. Lastly, hit submit. Friend Finder will evaluate and calculate who your best possible friend could be from the values given.
