@@ -15,15 +15,13 @@ module.exports = function(app) {
 
     var request = req.body;
 
-    var bestMatch = {
+    var bestMatch = [{
       name: "",
       photoImage: "",
       totalDiff: 20
-    }
+    }]
     // run a nested for loop of friends object
-    // userAnswers and currFrndAnswers
-
-    // var totalDiff = 0;
+    // userAnswers and currFrndAnswer
 
     // // for every object in friend array,
     for (var f = 0; f < friends.length; f++) {
@@ -39,14 +37,17 @@ module.exports = function(app) {
 
         console.log(totalDiff);
 
+        if (bestMatch.totalDiff >= totalDiff) {
+          friends[f].name = bestMatch.name;
+          friends[f].photoImage = bestMatch.photoImage;
+          totalDiff = bestMatch.totalDiff; //prints name
+          
+        }
+    
+        console.log(friends[f].name);
+
       }
       
-    if (bestMatch.totalDiff >= totalDiff) {
-      friends[i].name = bestMatch.name,
-      friends[i].photoImage = bestMatch.photoImage,
-      totalDiff = bestMatch.totalDiff //prints name
-    }
-
     }
 
     // // post photo image in a modal with their name.
@@ -54,8 +55,6 @@ module.exports = function(app) {
     // // if friends index has lowest difference
     // // lowest totalDifference variable will be posted as best match
  
-      
-      // console.log(friends[2].name);
     // send best match photoImage as a modal
     friends.push(request);
 

@@ -180,9 +180,6 @@
     <script type="text/javascript">
      $("#submit").on("click", function() { //on click jQuery
       event.preventDefault();
-    // if (($("personName").val() === "") &&  ($("#photoImage").val() === "")){
-    //     alert("Please provide a name and photo URL of yourself.");
-    // }
 
       var newFriend = { //taking the values from dropdwn menus
         name: $("#personName").val(),
@@ -205,6 +202,7 @@
         if (res) {
             
             console.log(res);
+            console.log(res.name);
             $(".bestMatchName").text(res.name);
             $(".bestMatchPhoto").attr("src", res.photoImage); //display modal dropdown
             $(".bestMatch").modal("show");
