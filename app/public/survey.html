@@ -16,7 +16,7 @@
         <form>
             <div class="form-group">
             <label for="exampleInputEmail1">Your Name (Required)</label>
-            <input type="email"  class="form-control" id="personName" aria-describedby="emailHelp" placeholder="Enter your name" required>
+            <input type="email" class="form-control" id="personName" aria-describedby="emailHelp" placeholder="Enter your name">
             </div>
             <div class="form-group">
             <label for="exampleInputPassword1">Link to Photo Image (Required)</label>
@@ -170,7 +170,6 @@
                 </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Test Again</button>
                 </div>
             </div>
             </div>
@@ -198,11 +197,10 @@
         ]
       };
 
-      $.post("/api/friends", newFriend, function(res) { //post function for API.
+      var modal = window.location.origin;
+      $.post(modal + "/api/friends", newFriend, function(res) { //post function for API.
         if (res) {
             
-            console.log(res);
-            console.log(res.name);
             $(".bestMatchName").text(res.name);
             $(".bestMatchPhoto").attr("src", res.photoImage); //display modal dropdown
             $(".bestMatch").modal("show");
@@ -211,8 +209,11 @@
         }) 
        
     });
-    
 
     </script>
 </body>
 </html>
+
+<!-- TODO 
+get images sized to modal box
+add comments to apiroutes.js-->
